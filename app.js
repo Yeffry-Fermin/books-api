@@ -8,12 +8,11 @@ let books = [
 
 let nextId = 6; // use this for any new book you create
 
-//PART-1
 const express = require('express')
 const app = express()
 app.use(express.json())
 
 app.get('/', (req, res) => res.send("Book Api is running"))
+app.get('/api/books', (req, res) => res.json(books))
 
 app.listen(8080,() => {console.log("Server running on port 8080")})
-//PART-2

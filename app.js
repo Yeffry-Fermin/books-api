@@ -57,6 +57,21 @@ app.get("/api/books/:id", (req, res) => {
   }
 });
 
+app.post("/api/books", (req, res) => {
+  const data = req.body;
+
+  const newBook = {
+    id: nextId,
+    title: data.title,
+    author: data.author,
+    genre: data.genre,
+    available: true,
+  };
+
+  books.push(newBook);
+  res.status(200).json(newBook);
+});
+
 app.listen(8080, () => {
   console.log("Server running on port 8080");
 });

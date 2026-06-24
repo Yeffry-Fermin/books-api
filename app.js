@@ -72,6 +72,21 @@ app.post("/api/books", (req, res) => {
   res.status(200).json(newBook);
 });
 
+app.patch("/api/books/:id", (req, res) => {
+  const book = books.find((book) => {
+    if (Number(req.params.id) === book.id) {
+      return book;
+    } 
+  });
+  console.log(book)
+  if (book) {
+    Object.assign(book, req.body);
+    res.status(200).json(book)
+  } else {
+    res.status(404).send("Not Found");
+  }
+});
+
 app.listen(8080, () => {
   console.log("Server running on port 8080");
 });
